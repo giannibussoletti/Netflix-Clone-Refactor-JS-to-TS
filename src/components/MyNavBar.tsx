@@ -4,8 +4,9 @@ import NavBarElement from "./Home/NavBarElement"
 import { Link, useNavigate } from "react-router"
 import SearchBar from "./Home/NavBar/SearchBar"
 import { faBars, faBell } from "@fortawesome/free-solid-svg-icons"
+import type { RequestOptions } from "../assets/types"
 
-const MyNavBar = function (props) {
+const MyNavBar = function ({ headers }: RequestOptions) {
   const navigate = useNavigate()
 
   const menuObj = {
@@ -68,11 +69,12 @@ const MyNavBar = function (props) {
             })}
           </Nav>
 
-          <SearchBar options={props.options} />
+          <SearchBar options={headers} />
 
           {/* Menu Destra */}
           <Nav className=" flex-row align-items-center">
-            <Nav.Link className={menuObj.class + " p-2 d-none d-sm-inline-block"}>KIDS</Nav.Link>
+            <Nav.Link className="p-2 d-none d-sm-inline-block">KIDS</Nav.Link>{" "}
+            {/* Scoprire di più su menuObj.class */}
             <Nav.Link className=" p-2 d-none d-sm-inline-block">
               <FontAwesomeIcon icon={faBell} style={{ color: "rgb(255, 255, 255)" }} />
             </Nav.Link>
