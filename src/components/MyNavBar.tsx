@@ -4,9 +4,9 @@ import NavBarElement from "./Home/NavBarElement"
 import { Link, useNavigate } from "react-router"
 import SearchBar from "./Home/NavBar/SearchBar"
 import { faBars, faBell } from "@fortawesome/free-solid-svg-icons"
-import type { RequestOptions } from "../assets/types"
+import type { NavBarFetchTypes } from "../assets/types"
 
-const MyNavBar = function ({ headers }: RequestOptions) {
+const MyNavBar = function ({ headers }: NavBarFetchTypes) {
   const navigate = useNavigate()
 
   const menuObj = {
@@ -69,7 +69,7 @@ const MyNavBar = function ({ headers }: RequestOptions) {
             })}
           </Nav>
 
-          <SearchBar options={headers} />
+          <SearchBar headers={headers} />
 
           {/* Menu Destra */}
           <Nav className=" flex-row align-items-center">

@@ -3,29 +3,12 @@ import NavBarSearch from "./NavBarSearch"
 import { useState } from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons"
+import type { MovieTypes, TvShowTypes } from "../../../assets/types"
+import { getMultiFetch } from "../../../assets/functions"
 
-const SearchBar = ({ headers }: RequestOptions) => {
+const SearchBar = () => {
   const [search, setSearch] = useState("")
-  const [searchResults, setResults] = useState()
-
-  const multiLink = `https://api.themoviedb.org/3/search/multi?query=${search}&include_adult=false&language=en-US&page=1`
-
-  const searchMulti = () => {
-    fetch(multiLink, headers)
-      .then((response) => {
-        if (response.ok) {
-          return response.json()
-        } else {
-          console.log(response)
-          throw new Error(response.statusText)
-        }
-      })
-      .then((data) => {
-        const filteredResults = data.results.filter((person) => person.media_type !== "person")
-        setResults(filteredResults)
-      })
-      .catch((err) => err)
-  }
+  const [searchResults, setResults] = useState<(MovieTypes | TvShowTypes)[] | undefined>()
 
   return (
     <Form
@@ -33,7 +16,7 @@ const SearchBar = ({ headers }: RequestOptions) => {
       onKeyDown={(e) => {
         if (e.code === "Enter") {
           e.preventDefault()
-          searchMulti()
+          getMultiFetch({ setResults, search })
           setSearch("")
         }
       }}>
@@ -52,7 +35,7 @@ const SearchBar = ({ headers }: RequestOptions) => {
             className="rounded-start-0 bg-dark border-0 border-start border-2"
             onClick={(e) => {
               e.preventDefault()
-              searchMulti()
+              getMultiFetch({ setResults, search })
               setSearch("")
             }}>
             <FontAwesomeIcon icon={faMagnifyingGlass} style={{ color: "rgb(255, 255, 255)" }} />
@@ -62,7 +45,7 @@ const SearchBar = ({ headers }: RequestOptions) => {
       {searchResults ? (
         <Row
           onMouseLeave={() => {
-            setTimeout(() => setResults(null), 1000)
+            setTimeout(() => setResults(undefined), 1000)
           }}
           className="position-absolute bg-black p-3 justify-content-center w-100 m-0"
           xs={1}
@@ -70,26 +53,27 @@ const SearchBar = ({ headers }: RequestOptions) => {
           lg={3}
           xl={4}
           xxl={6}>
-          {searchResults.slice(0, 6).map((result) => {
-            return (
-              <NavBarSearch
-                key={result.id}
-                poster={result.poster_path}
-                mediaType={result.media_type}
-                year={
-                  result.release_date || result.first_air_date
-                    ? result.release_date
-                      ? result.release_date.slice(0, 4)
-                      : result.first_air_date.slice(0, 4)
-                    : ""
-                }
-                titleMovie={result.title}
-                titleSeries={result.name}
-                id={result.id}
-                setResults={setResults}
-              />
-            )
-          })}
+          {searchResults &&
+            searchResults.slice(0, 6).map((result) => {
+              return (
+                <NavBarSearch
+                  key={result.id}
+                  poster={result.poster_path}
+                  mediaType={result.media_type}
+                  year={
+                    (result as MovieTypes).release_date || (result as TvShowTypes).first_air_date
+                      ? (result as MovieTypes).release_date
+                        ? (result as MovieTypes).release_date.slice(0, 4)
+                        : (result as TvShowTypes).first_air_date.slice(0, 4)
+                      : ""
+                  }
+                  titleMovie={(result as MovieTypes).title}
+                  titleSeries={(result as TvShowTypes).name}
+                  id={result.id}
+                  setResults={setResults}
+                />
+              )
+            })}
         </Row>
       ) : (
         <div style={{ width: "0", height: "0" }}></div>

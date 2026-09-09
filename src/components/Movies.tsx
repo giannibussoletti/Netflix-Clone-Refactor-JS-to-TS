@@ -1,19 +1,20 @@
+import type { MovieArrayTypes } from "../assets/types"
 import FullHeigthCar from "./Home/FullHeigthCar"
 import SliderMedia from "./Home/SliderMedia"
 
-const Movies = function (props) {
+const Movies = function ({ firstSpinner, listPopularMovie, fhCarouselArrays }: MovieArrayTypes) {
   return (
     <>
-      <FullHeigthCar fhCarouselArray={props.fhCarouselArray} />
+      <FullHeigthCar fhCarouselArrays={fhCarouselArrays} />
       <SliderMedia
-        responseOK={props.firstSpinner}
+        responseOK={firstSpinner}
         title="Fresh Movies"
-        array_path={props.listPopularMovie.slice(0, 10)}
+        array_path={listPopularMovie && listPopularMovie.slice(0, 10)}
       />
       <SliderMedia
-        responseOK={props.firstSpinner}
+        responseOK={firstSpinner}
         title="Top Rated"
-        array_path={props.listPopularMovie.slice(11)}
+        array_path={listPopularMovie && listPopularMovie.slice(11)}
       />
     </>
   )

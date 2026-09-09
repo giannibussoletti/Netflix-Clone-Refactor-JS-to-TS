@@ -1,18 +1,17 @@
-import { Link, useLocation } from "react-router"
+import { useLocation } from "react-router"
+import type { NavBarElementTypes } from "../../assets/types"
 
-const NavBarElement = function (props) {
+const NavBarElement = function ({ buttonName, classObj, typeOf, pageLink }: NavBarElementTypes) {
   const location = useLocation()
 
   const pathLink = Array.from(location.pathname)
     .filter((l) => l !== "/")
     .join("")
-  const CustomTag = props.typeOf
+  const CustomTag = typeOf
 
   return (
-    <CustomTag
-      className={props.classObj + (pathLink === props.pageLink ? " active" : "")}
-      to={"/" + props.pageLink}>
-      {props.buttonName}
+    <CustomTag className={classObj + (pathLink === pageLink ? " active" : "")} to={"/" + pageLink}>
+      {buttonName}
     </CustomTag>
   )
 }
