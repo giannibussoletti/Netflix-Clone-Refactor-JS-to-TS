@@ -25,14 +25,14 @@ type GenericMediaTypes = {
   vote_count: number
 }
 
-type MovieTypes = GenericMediaTypes & {
+export type MovieTypes = GenericMediaTypes & {
   title: string
   original_title: string
   release_date: string
   video: boolean
 }
 
-type TvShowTypes = GenericMediaTypes & {
+export type TvShowTypes = GenericMediaTypes & {
   origin_country: string[]
   first_air_date: string
   name: string
@@ -49,3 +49,11 @@ type PaginatedResponse<T> = {
 
 export type MovieListResponse = PaginatedResponse<MovieTypes>
 export type TvShowListResponse = PaginatedResponse<TvShowTypes>
+
+export type PromiseTypes = {
+  apiLink: string
+}
+
+export type RequestOptions = {
+  headers: HeadersInit
+}

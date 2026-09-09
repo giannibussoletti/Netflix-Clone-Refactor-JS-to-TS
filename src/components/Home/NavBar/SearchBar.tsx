@@ -2,21 +2,22 @@ import { Button, Col, Form, Row } from "react-bootstrap"
 import NavBarSearch from "./NavBarSearch"
 import { useState } from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons"
 
-const SearchBar = (props) => {
+const SearchBar = ({ headers }: RequestOptions) => {
   const [search, setSearch] = useState("")
   const [searchResults, setResults] = useState()
 
   const multiLink = `https://api.themoviedb.org/3/search/multi?query=${search}&include_adult=false&language=en-US&page=1`
 
   const searchMulti = () => {
-    fetch(multiLink, props.options)
+    fetch(multiLink, headers)
       .then((response) => {
         if (response.ok) {
           return response.json()
         } else {
           console.log(response)
-          throw new Error(response.status)
+          throw new Error(response.statusText)
         }
       })
       .then((data) => {
@@ -54,10 +55,7 @@ const SearchBar = (props) => {
               searchMulti()
               setSearch("")
             }}>
-            <FontAwesomeIcon
-              icon="fa-solid fa-magnifying-glass"
-              style={{ color: "rgb(255, 255, 255)" }}
-            />
+            <FontAwesomeIcon icon={faMagnifyingGlass} style={{ color: "rgb(255, 255, 255)" }} />
           </Button>
         </Col>
       </Row>
