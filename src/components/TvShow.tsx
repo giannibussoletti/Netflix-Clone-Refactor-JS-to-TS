@@ -1,19 +1,20 @@
+import type { TvShowArrayTypes } from "../assets/types"
 import FullHeigthCar from "./Home/FullHeigthCar"
 import SliderMedia from "./Home/SliderMedia"
 
-const TvShow = function (props) {
+const TvShow = function ({ thirdSpinner, listPopularTV, fhCarouselSeries }: TvShowArrayTypes) {
   return (
     <>
-      <FullHeigthCar fhCarouselArray={props.fhCarouselArray} />
+      <FullHeigthCar fhCarouselSeries={fhCarouselSeries} />
       <SliderMedia
-        responseOK={props.thirdSpinner}
+        responseOK={thirdSpinner}
         title="Fresh TV Show"
-        array_path={props.listPopularTV.slice(0, 10)}
+        array_path={listPopularTV && listPopularTV.slice(0, 10)}
       />
       <SliderMedia
-        responseOK={props.thirdSpinner}
+        responseOK={thirdSpinner}
         title="Another Binge Watching couldn't hurt"
-        array_path={props.listPopularTV.slice(11)}
+        array_path={listPopularTV && listPopularTV.slice(11)}
       />
     </>
   )
