@@ -15,7 +15,7 @@ const LoginPage = function () {
         </Row>
         <Row>
           <Col className="text-center text-md-start pt-4" xs={12} md={3}>
-            <Image fluid src="../public/kids_icon.png" />
+            <Image fluid src="./kids_icon.png" />
           </Col>
           <Col>
             {/* NOME E LINGUA */}
