@@ -3,6 +3,7 @@ import SliderTitle from "./SliderComponents/SliderTitle"
 import SingleSlide from "./SliderComponents/SingleSlide"
 import SliderButton from "./SliderComponents/SliderButton"
 import type { MovieTypes, SliderMediaTypes } from "../../assets/types"
+import { LEFT, RIGHT } from "../../assets/variables"
 
 const SliderMedia = function ({ responseOK, title, array_path }: SliderMediaTypes) {
   return (
@@ -32,8 +33,8 @@ const SliderMedia = function ({ responseOK, title, array_path }: SliderMediaType
                 />
               )
             })}
-          <SliderButton arrowDirection="right" arrowPosition="end" />
-          <SliderButton arrowDirection="left" arrowPosition="start" />
+          <SliderButton arrowDirection={RIGHT} arrowPosition="end" />
+          <SliderButton arrowDirection={LEFT} arrowPosition="start" />
         </Row>
       </Row>
     </Container>

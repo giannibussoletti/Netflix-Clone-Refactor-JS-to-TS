@@ -2,9 +2,7 @@ import { Container, Row, Col, Image, Button, Dropdown, Form } from "react-bootst
 import MenuLang from "./components/LoginPageComponents/MenuLang"
 import BottomButton from "./components/LoginPageComponents/BottomButton"
 import { Link } from "react-router"
-
-const langArray = ["Italian", "English", "German", "Spanish"]
-const bottomButton = ["SAVE", "CANCEL", "DELETE PROFILE"]
+import { bottomButton, langArray } from "./assets/arrays"
 
 const LoginPage = function () {
   return (
@@ -40,7 +38,7 @@ const LoginPage = function () {
                 </Dropdown.Toggle>
                 <Dropdown.Menu className="bg-black border border-2 border-light rounded-0">
                   {langArray.map((lang) => {
-                    return <MenuLang lang={lang} />
+                    return <MenuLang value={lang} />
                   })}
                 </Dropdown.Menu>
               </Dropdown>
@@ -84,7 +82,7 @@ const LoginPage = function () {
         <Row className="mt-3 pt-4 border-top border-secondary">
           <Row className="d-flex flex-wrap justify-content-center gap-3">
             {bottomButton.map((button) => {
-              return <BottomButton key={"button-" + button} button={button} />
+              return <BottomButton key={"button-" + button} value={button} />
             })}
           </Row>
         </Row>

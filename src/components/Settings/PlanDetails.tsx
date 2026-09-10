@@ -5,7 +5,7 @@ const PlanDetails = function () {
   return (
     <>
       <Col className="p-0 text-center text-sm-start">
-        <SectionTitle sectionTitle="plan details" />
+        <SectionTitle value="plan details" />
       </Col>
       <Col className="text-center text-sm-start">
         <span className="mb-2 fw-bold">Premium</span>

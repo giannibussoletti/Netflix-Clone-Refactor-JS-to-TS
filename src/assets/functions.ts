@@ -1,5 +1,6 @@
 import { fetchFunction } from "./fetchs"
 import type {
+  DetailsResponse,
   MovieListResponse,
   MultiSearchResponse,
   TvShowListResponse,
@@ -11,8 +12,8 @@ import {
   popularTV,
   onTheAir,
   topRated,
-  multiBefore,
-  multiAfter,
+  multiStart,
+  multiEnd,
 } from "./variables"
 
 export const getUpcoming = ({ setCarouselMovie }: useStateTypes) => {
@@ -20,7 +21,7 @@ export const getUpcoming = ({ setCarouselMovie }: useStateTypes) => {
     apiLink: upcomingMovies,
   })
     .then((data) => {
-      if (data && setCarouselMovie) {
+      if (setCarouselMovie) {
         setCarouselMovie(data.results)
       }
     })
@@ -32,7 +33,7 @@ export const getPopularMovies = ({ setListPopularMovie, setFirstSpinner }: useSt
     apiLink: popularMovie,
   })
     .then((data) => {
-      if (data && setListPopularMovie && setFirstSpinner) {
+      if (setListPopularMovie && setFirstSpinner) {
         setListPopularMovie(data.results)
         setFirstSpinner(false)
       } else throw new Error("errore nella fetch")
@@ -44,7 +45,7 @@ export const getPopularTvShow = ({ setListPopularTV, setThirdSpinner }: useState
     apiLink: popularTV,
   })
     .then((data) => {
-      if (data && setListPopularTV && setThirdSpinner) {
+      if (setListPopularTV && setThirdSpinner) {
         setListPopularTV(data.results)
         setThirdSpinner(false)
       } else throw new Error("errore nella fetch")
@@ -56,7 +57,7 @@ export const getOnTheAir = ({ setCarouselSeries }: useStateTypes) => {
     apiLink: onTheAir,
   })
     .then((data) => {
-      if (data && setCarouselSeries) {
+      if (setCarouselSeries) {
         setCarouselSeries(data.results)
       } else throw new Error("errore nella fetch")
     })
@@ -67,22 +68,54 @@ export const getTopRated = ({ setSecondSpinner, setTvTopRated }: useStateTypes) 
     apiLink: topRated,
   })
     .then((data) => {
-      if (data && setSecondSpinner && setTvTopRated) {
+      if (setSecondSpinner && setTvTopRated) {
         setSecondSpinner(false)
         setTvTopRated(data.results)
       } else throw new Error("errore nella fetch")
     })
     .catch((err) => err)
 }
-export const getMultiFetch = ({ setResults, search }: useStateTypes) => {
-  fetchFunction<MultiSearchResponse>({
-    apiLink: multiBefore + search + multiAfter,
-  })
-    .then((data) => {
-      if (data && setResults) {
-        const filteredResults = data.results.filter((person) => person.media_type !== "person")
-        setResults(filteredResults)
-      }
+export const getMultiFetch = ({ setResults, linkValue }: useStateTypes) => {
+  if (linkValue) {
+    fetchFunction<MultiSearchResponse>({
+      apiLink: multiStart + linkValue + multiEnd,
     })
-    .catch((err) => err)
+      .then((data) => {
+        if (setResults) {
+          const filteredResults = data.results.filter((person) => person.media_type !== "person")
+          setResults(filteredResults)
+        }
+      })
+      .catch((err) => err)
+  }
+}
+
+export const getDetailsFetch = ({ setMediaDetails, setIsData, linkValue }: useStateTypes) => {
+  if (linkValue) {
+    fetchFunction<DetailsResponse>({
+      apiLink: linkValue,
+    })
+      .then((data) => {
+        if (setMediaDetails && setIsData) {
+          setMediaDetails(data)
+          setIsData(true)
+        } else throw new Error("errore nella fetch")
+      })
+      .catch((err) => err)
+  }
+}
+
+export const getLogosFetch = ({ setMediaDetails, setIsData, linkValue }: useStateTypes) => {
+  if (linkValue) {
+    fetchFunction<DetailsResponse>({
+      apiLink: linkValue,
+    })
+      .then((data) => {
+        if (setMediaDetails && setIsData) {
+          setMediaDetails(data)
+          setIsData(true)
+        } else throw new Error("errore nella fetch")
+      })
+      .catch((err) => err)
+  }
 }

@@ -8,12 +8,12 @@ const LanguageSettings = function () {
     <>
       <Col md={4} className="offset-0 text-center text-sm-end text-md-start offset-md-4 p-0">
         {languageArray.map((listItem, i) => {
-          return <ListGenerator key={listItem + i} ListItem={listItem} />
+          return <ListGenerator key={listItem + i} value={listItem} />
         })}
       </Col>
       <Col className="text-center text-sm-end text-md-start p-0">
         {ratingArray.map((listItem, i) => {
-          return <ListGenerator key={listItem + i} ListItem={listItem} />
+          return <ListGenerator key={listItem + i} value={listItem} />
         })}
       </Col>
     </>

@@ -3,11 +3,11 @@ import { Button, Col, Row } from "react-bootstrap"
 import SectionTitle from "./SectionTitle"
 import ListGenerator from "./ListGenerator"
 import { faPaypal } from "@fortawesome/free-brands-svg-icons"
-
-const studentSecondSection = ["Change account email", "Change password", "Change phone number"]
-
-const paymentFirstSection = ["Update payment info", "Billing details"]
-const paymentSecondSection = ["Redeem gift card or promo code", "Where to buy gitt cards"]
+import {
+  studentSecondSection,
+  paymentFirstSection,
+  paymentSecondSection,
+} from "../../assets/arrays"
 
 const AccountMember = function () {
   return (
@@ -19,7 +19,7 @@ const AccountMember = function () {
             mb-4
             ms-md-0
             ">
-        <SectionTitle sectionTitle="Membership &amp; billing" />
+        <SectionTitle value="Membership &amp; billing" />
         <Button
           variant="dark"
           className="px-4 shadow-sm rounded-0 border-bottom border-secondary opacity-50 border-opacity-50 border-1">
@@ -36,7 +36,7 @@ const AccountMember = function () {
           </Col>
           <Col sm={6} className="text-center text-sm-end">
             {studentSecondSection.map((listItem, i) => {
-              return <ListGenerator key={listItem + i} ListItem={listItem} />
+              return <ListGenerator key={listItem + i} value={listItem} />
             })}
           </Col>
         </Row>
@@ -47,7 +47,7 @@ const AccountMember = function () {
           </Col>
           <Col className="p-0 text-center text-sm-end" sm={6}>
             {paymentFirstSection.map((listItem, i) => {
-              return <ListGenerator key={listItem + i} ListItem={listItem} />
+              return <ListGenerator key={listItem + i} value={listItem} />
             })}
           </Col>
         </Row>
@@ -55,7 +55,7 @@ const AccountMember = function () {
         <Row>
           <Col className="p-0 text-center text-sm-end">
             {paymentSecondSection.map((listItem, i) => {
-              return <ListGenerator key={listItem + i} ListItem={listItem} />
+              return <ListGenerator key={listItem + i} value={listItem} />
             })}
           </Col>
         </Row>
