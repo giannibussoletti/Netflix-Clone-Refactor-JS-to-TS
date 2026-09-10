@@ -2,45 +2,34 @@ import { useEffect, useState } from "react"
 import { Col, Container, Row, Image, Button } from "react-bootstrap"
 import { useLocation, useParams } from "react-router"
 import DetailsPlaceholder from "./DetailsPlaceholder"
-import { movieLink, options, tvShowLink } from "./assets/variables"
-import type { DetailsResponse, MovieDetailsTypes, TVShowDetailsTypes } from "./assets/types"
-import { getDetailsFetch } from "./assets/functions"
+import { logosLinkEnd, movieLink, tvShowLink } from "./assets/variables"
+import type {
+  DetailsResponse,
+  ImageItem,
+  MovieDetailsTypes,
+  TVShowDetailsTypes,
+} from "./assets/types"
+import { getDetailsFetch, getLogosFetch } from "./assets/functions"
 const Details = function () {
   const [mediaDetails, setMediaDetails] = useState<DetailsResponse | undefined>()
-  const [mediaLogo, setMediaLogo] = useState({})
+  const [mediaLogo, setLogo] = useState<ImageItem | undefined>()
   const [isData, setIsData] = useState(false)
   const params = useParams()
   const location = useLocation()
 
-  const movieLogos = `https://api.themoviedb.org/3/movie/${params.uniqueId}/images?include_image_language=en-US`
-  const tvShowLogos = `https://api.themoviedb.org/3/tv/${params.uniqueId}/images?include_image_language=en-US`
-
-  const LogosFetching = () => {
-    fetch(params.mediaType === "movie" ? movieLogos : tvShowLogos, options)
-      .then((response) => {
-        if (response.ok) {
-          console.log(response.json())
-          return response.json()
-        } else {
-          throw new Error(response.statusText)
-        }
-      })
-      .then((data) => {
-        setMediaLogo(data.logos[0])
-      })
-      .catch((err) => err)
-  }
+  const movieLogos = movieLink + params.uniqueId + logosLinkEnd
+  const tvShowLogos = tvShowLink + params.uniqueId + logosLinkEnd
 
   const linkValue =
     params.mediaType === "movie" ? movieLink + params.uniqueId : tvShowLink + params.uniqueId
 
   useEffect(() => {
     getDetailsFetch({ setMediaDetails, setIsData, linkValue })
-  }, [location.pathname, linkValue])
+    getLogosFetch({
+      setLogo,
+      linkValue: params.mediaType === "movie" ? movieLogos : tvShowLogos,
+    })
 
-  useEffect(() => {
-    getDetailsFetch({ setMediaDetails, setIsData, linkValue })
-    LogosFetching()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location.pathname])
 

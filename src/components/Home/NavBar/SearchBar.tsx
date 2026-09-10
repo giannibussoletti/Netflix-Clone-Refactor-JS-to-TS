@@ -16,7 +16,7 @@ const SearchBar = () => {
       onKeyDown={(e) => {
         if (e.code === "Enter") {
           e.preventDefault()
-          getMultiFetch({ setResults, search })
+          getMultiFetch({ setResults, linkValue: search })
           setSearch("")
         }
       }}>
@@ -35,7 +35,7 @@ const SearchBar = () => {
             className="rounded-start-0 bg-dark border-0 border-start border-2"
             onClick={(e) => {
               e.preventDefault()
-              getMultiFetch({ setResults, search })
+              getMultiFetch({ setResults, linkValue: search })
               setSearch("")
             }}>
             <FontAwesomeIcon icon={faMagnifyingGlass} style={{ color: "rgb(255, 255, 255)" }} />

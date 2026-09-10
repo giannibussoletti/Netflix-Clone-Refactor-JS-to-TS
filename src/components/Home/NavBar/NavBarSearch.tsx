@@ -21,7 +21,7 @@ const NavBarSearch = function ({
           navigate("/details/" + (mediaType === "movie" ? "movie/" : "serie/") + id)
           setResults(undefined)
         }}>
-        <Image style={{ maxHeight: "220px" }} src={"https://image.tmdb.org/t/p/w500" + poster} />
+        <Image style={{ maxHeight: "220px" }} src={"https://image.tmdb.org/t/p/w500/" + poster} />
       </Col>
       <Col className="p-0 ps-2 my-2 flex-grow-1">
         {" "}
