@@ -1,6 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css"
 
-import type { MovieTypes, TvShowTypes } from "./assets/types"
+import type { UnionMediaTypes } from "./assets/types"
 import { useEffect, useState } from "react"
 import { BrowserRouter, Route, Routes } from "react-router"
 import Home from "./Home"
@@ -20,7 +20,6 @@ import {
   getPopularTvShow,
   getTopRated,
 } from "./assets/functions"
-import { options } from "./assets/variables"
 // FONTAWESOME IMPORT
 import { library } from "@fortawesome/fontawesome-svg-core"
 import { fas } from "@fortawesome/free-solid-svg-icons"
@@ -31,11 +30,11 @@ library.add(fas, far, fab)
 // Fetch
 
 const App = () => {
-  const [listPopularMovie, setListPopularMovie] = useState<MovieTypes[] | TvShowTypes[]>()
-  const [carouselMovies, setCarouselMovie] = useState<MovieTypes[] | TvShowTypes[]>()
-  const [tvTopRated, setTvTopRated] = useState<MovieTypes[] | TvShowTypes[]>()
-  const [listPopularTV, setListPopularTV] = useState<MovieTypes[] | TvShowTypes[]>()
-  const [carouselSeries, setCarouselSeries] = useState<MovieTypes[] | TvShowTypes[]>()
+  const [listPopularMovie, setListPopularMovie] = useState<UnionMediaTypes>()
+  const [carouselMovies, setCarouselMovie] = useState<UnionMediaTypes>()
+  const [tvTopRated, setTvTopRated] = useState<UnionMediaTypes>()
+  const [listPopularTV, setListPopularTV] = useState<UnionMediaTypes>()
+  const [carouselSeries, setCarouselSeries] = useState<UnionMediaTypes>()
   const [firstSpinner, setFirstSpinner] = useState(true)
   const [secondSpinner, setSecondSpinner] = useState(true)
   const [thirdSpinner, setThirdSpinner] = useState(true)
@@ -52,7 +51,7 @@ const App = () => {
     <BrowserRouter>
       <div className="d-flex flex-column vh-100">
         <header className="position-relative z-2">
-          <MyNavBar headers={options.headers} />
+          <MyNavBar />
         </header>
         <main className="bg-black flex-grow-1 z-1">
           <Routes>
