@@ -8,7 +8,7 @@ const FullHeigthCar = function ({ fhCarouselArrays }: FhCarouselType) {
       <Carousel
         slide={true}
         className="vw-100 vh-100 position-absolute top-0"
-        controls={true}
+        controls={false}
         indicators={false}>
         {fhCarouselArrays &&
           fhCarouselArrays.map((media, i) => {

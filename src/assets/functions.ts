@@ -1,6 +1,7 @@
 import { fetchFunction } from "./fetchs"
 import type {
   DetailsResponse,
+  MediaImagesResponse,
   MovieListResponse,
   MultiSearchResponse,
   TvShowListResponse,
@@ -105,15 +106,14 @@ export const getDetailsFetch = ({ setMediaDetails, setIsData, linkValue }: useSt
   }
 }
 
-export const getLogosFetch = ({ setMediaDetails, setIsData, linkValue }: useStateTypes) => {
+export const getLogosFetch = ({ setLogo, linkValue }: useStateTypes) => {
   if (linkValue) {
-    fetchFunction<DetailsResponse>({
+    fetchFunction<MediaImagesResponse>({
       apiLink: linkValue,
     })
       .then((data) => {
-        if (setMediaDetails && setIsData) {
-          setMediaDetails(data)
-          setIsData(true)
+        if (setLogo) {
+          setLogo(data.logos[0])
         } else throw new Error("errore nella fetch")
       })
       .catch((err) => err)

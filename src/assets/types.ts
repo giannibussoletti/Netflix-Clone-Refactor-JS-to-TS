@@ -1,3 +1,4 @@
+import type { IconDefinition } from "@fortawesome/fontawesome-svg-core"
 import type { Dispatch, ForwardRefExoticComponent, RefAttributes, SetStateAction } from "react"
 import type { LinkProps } from "react-router"
 
@@ -89,6 +90,7 @@ export type RequestOptions = {
 }
 
 export type UnionMediaTypes = MovieTypes[] | TvShowTypes[] | undefined
+export type CarouselMediaTypes = { infoMedia: MovieTypes | TvShowTypes }
 
 //Use state type for fetch functions
 export type useStateTypes = {
@@ -99,6 +101,7 @@ export type useStateTypes = {
   setCarouselSeries?: Dispatch<SetStateAction<UnionMediaTypes>>
   setResults?: Dispatch<SetStateAction<(MovieTypes | TvShowTypes)[] | undefined>>
   setMediaDetails?: Dispatch<SetStateAction<DetailsResponse | undefined>>
+  setLogo?: Dispatch<SetStateAction<ImageItem | undefined>>
   setIsData?: Dispatch<SetStateAction<boolean>>
   setFirstSpinner?: Dispatch<SetStateAction<boolean>>
   setSecondSpinner?: Dispatch<SetStateAction<boolean>>
@@ -289,7 +292,7 @@ export type TVShowDetailsTypes = BaseDetailsTypes & {
 
 export type DetailsResponse = TVShowDetailsTypes | MovieDetailsTypes
 
-type ImageItem = {
+export type ImageItem = {
   aspect_ratio: number
   height: number
   iso_639_1: string | null
@@ -304,4 +307,12 @@ export type MediaImagesResponse = {
   backdrops: ImageItem[]
   logos: ImageItem[]
   posters: ImageItem[]
+}
+
+export type ButtonSliderTypes = {
+  movieObj?: CarouselMediaTypes["infoMedia"]
+  btnClass: string
+  variant: string
+  icon: IconDefinition
+  text: string
 }

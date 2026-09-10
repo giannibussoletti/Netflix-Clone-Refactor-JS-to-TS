@@ -2,10 +2,10 @@ import type { TvShowArrayTypes } from "../assets/types"
 import FullHeigthCar from "./Home/FullHeigthCar"
 import SliderMedia from "./Home/SliderMedia"
 
-const TvShow = function ({ thirdSpinner, listPopularTV, fhCarouselSeries }: TvShowArrayTypes) {
+const TvShow = function ({ thirdSpinner, listPopularTV, fhCarouselArrays }: TvShowArrayTypes) {
   return (
     <>
-      <FullHeigthCar fhCarouselSeries={fhCarouselSeries} />
+      <FullHeigthCar fhCarouselArrays={fhCarouselArrays} />
       <SliderMedia
         responseOK={thirdSpinner}
         title="Fresh TV Show"

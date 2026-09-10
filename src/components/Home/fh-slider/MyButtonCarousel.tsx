@@ -1,19 +1,24 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { Button } from "react-bootstrap"
 import { useNavigate } from "react-router"
+import type { ButtonSliderTypes, MovieTypes } from "../../../assets/types"
 
-const MyButtonSlider = function (props) {
+const MyButtonSlider = function ({ movieObj, btnClass, variant, icon, text }: ButtonSliderTypes) {
   const navigate = useNavigate()
   return (
     <Button
-      variant={props.variant}
-      className={props.btnClass}
+      variant={variant}
+      className={btnClass}
       onClick={() => {
-        props.movieObj
-          ? navigate("/details/" + (props.movieObj.title ? "movie/" : "serie/") + props.movieObj.id)
-          : ""
+        if (movieObj) {
+          navigate(
+            "/details/" + ((movieObj as MovieTypes).title ? "movie/" : "serie/") + movieObj.id,
+          )
+        } else {
+          return ""
+        }
       }}>
-      <FontAwesomeIcon icon={props.icon} /> {props.text}
+      <FontAwesomeIcon icon={icon} /> {text}
     </Button>
   )
 }
