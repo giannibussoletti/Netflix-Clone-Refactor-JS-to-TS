@@ -27,8 +27,6 @@ import { far } from "@fortawesome/free-regular-svg-icons"
 import { fab } from "@fortawesome/free-brands-svg-icons"
 library.add(fas, far, fab)
 
-// Fetch
-
 const App = () => {
   const [listPopularMovie, setListPopularMovie] = useState<UnionMediaTypes>()
   const [carouselMovies, setCarouselMovie] = useState<UnionMediaTypes>()

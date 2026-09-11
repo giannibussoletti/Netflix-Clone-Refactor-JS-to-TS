@@ -7,15 +7,7 @@ import type {
   TvShowListResponse,
   useStateTypes,
 } from "./types"
-import {
-  upcomingMovies,
-  popularMovie,
-  popularTV,
-  onTheAir,
-  topRated,
-  multiStart,
-  multiEnd,
-} from "./variables"
+import { upcomingMovies, popularMovie, popularTV, onTheAir, topRated, multi } from "./variables"
 
 export const getUpcoming = ({ setCarouselMovie }: useStateTypes) => {
   fetchFunction<MovieListResponse>({
@@ -79,10 +71,11 @@ export const getTopRated = ({ setSecondSpinner, setTvTopRated }: useStateTypes) 
 export const getMultiFetch = ({ setResults, linkValue }: useStateTypes) => {
   if (linkValue) {
     fetchFunction<MultiSearchResponse>({
-      apiLink: multiStart + linkValue + multiEnd,
+      apiLink: multi + linkValue,
     })
       .then((data) => {
         if (setResults) {
+          console.log(multi + linkValue)
           const filteredResults = data.results.filter((person) => person.media_type !== "person")
           setResults(filteredResults)
         }

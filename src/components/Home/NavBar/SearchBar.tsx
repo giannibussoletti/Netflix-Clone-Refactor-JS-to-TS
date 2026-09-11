@@ -24,7 +24,7 @@ const SearchBar = () => {
         <Col xs="auto" className="px-1 d-flex w-100">
           <Form.Control
             type="text"
-            placeholder="Cosa ti va di guardare?"
+            placeholder="Search"
             value={search}
             className="mr-sm-2 border-0 rounded-start-3 rounded-end-0 flex-grow-1"
             onChange={(e) => {
