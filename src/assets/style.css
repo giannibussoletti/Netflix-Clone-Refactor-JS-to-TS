@@ -37,17 +37,6 @@
   left: 0;
 }
 
-/* .modal-details::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background-color: #000;
-  opacity: 0.7;
-} */
-
 .main-container-details {
   z-index: 1;
 }
@@ -142,4 +131,13 @@ h4,
 
 .average-vote h5 {
   margin: 0 !important;
+}
+
+/*No logo text shadow carousel*/
+.no-logo-shadow {
+  text-shadow: 0px 0px 8px black;
+  text-align: center;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: bold;
 }

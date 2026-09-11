@@ -1,16 +1,9 @@
-import { faFacebook, faInstagram, faTwitter, faYoutube } from "@fortawesome/free-brands-svg-icons"
 import FooterColComponent from "./components/FooterColComponent"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-
 import { Col, Container, Row, Button } from "react-bootstrap"
+import { footerIcon, footerArrays } from "./assets/arrays"
 
 const Footer = function () {
-  const footerIcon = [faFacebook, faInstagram, faTwitter, faYoutube]
-  const firstColFooter = ["Audio and Subtitles", "Media Center", "Privacy", "Contact Us"]
-  const secondColFooter = ["Audio Description", "Investor Relations", "Legal Notices"]
-  const thirdColFooter = ["Help Center", "Jobs", "Cookie Preferences"]
-  const fourthColFooter = ["Gift Cards", "Terms of Use", "Corporate Information"]
-
   return (
     <Container>
       <Row className="text-center text-md-start" xs={1} sm={2} md={4}>
@@ -21,14 +14,13 @@ const Footer = function () {
               className="me-3"
               icon={icon}
               style={{ color: "#808080" }}
-              key={"fa-2x fa-brands fa-square-" + icon}
+              key={"fa-2x fa-brands fa-square-" + icon.iconName.toLocaleUpperCase()}
             />
           ))}
         </Col>
-        <FooterColComponent footerArray={firstColFooter} />
-        <FooterColComponent footerArray={secondColFooter} />
-        <FooterColComponent footerArray={thirdColFooter} />
-        <FooterColComponent footerArray={fourthColFooter} />
+        {footerArrays.map((array) => {
+          return <FooterColComponent footerArray={array} />
+        })}
       </Row>
 
       <Row xs={1} className="text-center text-md-start">

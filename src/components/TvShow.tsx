@@ -13,7 +13,7 @@ const TvShow = function ({ thirdSpinner, listPopularTV, fhCarouselArrays }: TvSh
       />
       <SliderMedia
         responseOK={thirdSpinner}
-        title="Another Binge Watching couldn't hurt"
+        title="Another Binge Watching?"
         array_path={listPopularTV && listPopularTV.slice(11)}
       />
     </>

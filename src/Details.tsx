@@ -2,7 +2,14 @@ import { useEffect, useState } from "react"
 import { Col, Container, Row, Image, Button } from "react-bootstrap"
 import { useLocation, useParams } from "react-router"
 import DetailsPlaceholder from "./DetailsPlaceholder"
-import { logosLinkEnd, movieLink, tvShowLink } from "./assets/variables"
+import {
+  detailsMovieLink,
+  detailsTvShowLink,
+  imgLink,
+  logoMovieLink,
+  logoTvShowLink,
+  movie,
+} from "./assets/variables"
 import type {
   DetailsResponse,
   ImageItem,
@@ -17,17 +24,19 @@ const Details = function () {
   const params = useParams()
   const location = useLocation()
 
-  const movieLogos = movieLink + params.uniqueId + logosLinkEnd
-  const tvShowLogos = tvShowLink + params.uniqueId + logosLinkEnd
+  const mediaType = params.mediaType
+  const uniqueId = params.uniqueId
 
-  const linkValue =
-    params.mediaType === "movie" ? movieLink + params.uniqueId : tvShowLink + params.uniqueId
+  const movieLogos = logoMovieLink + uniqueId
+  const tvShowLogos = logoTvShowLink + uniqueId
+  const linkValue = mediaType === movie ? detailsMovieLink + uniqueId : detailsTvShowLink + uniqueId
 
   useEffect(() => {
     getDetailsFetch({ setMediaDetails, setIsData, linkValue })
+
     getLogosFetch({
       setLogo,
-      linkValue: params.mediaType === "movie" ? movieLogos : tvShowLogos,
+      linkValue: params.mediaType === movie ? movieLogos : tvShowLogos,
     })
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -44,17 +53,12 @@ const Details = function () {
       <Container>
         <Row className="my-4 bg-black p-4">
           <Col md={12} lg={6} className="text-center mb-3 my-lg-2">
-            <Image fluid src={"http://image.tmdb.org/t/p/" + "w342" + mediaDetails?.poster_path} />
+            <Image fluid src={imgLink + "w342" + mediaDetails?.poster_path} />
           </Col>
           <Col className="d-flex flex-column justify-content-center mb-5">
             {mediaLogo ? (
               <div className="text-center">
-                <Image
-                  fluid
-                  className="mb-3"
-                  src={"http://image.tmdb.org/t/p/" + "w342" + mediaLogo.file_path}
-                  alt=""
-                />
+                <Image fluid className="mb-3" src={imgLink + "w342" + mediaLogo.file_path} alt="" />
               </div>
             ) : (
               <h2 className="text-uppercase fw-bold">
@@ -124,7 +128,7 @@ const Details = function () {
       </Container>
       <Image
         className="media-details-bg px-0 w-100"
-        src={"http://image.tmdb.org/t/p/" + "original/" + mediaDetails?.backdrop_path}
+        src={imgLink + "original/" + mediaDetails?.backdrop_path}
       />
     </Container>
   )

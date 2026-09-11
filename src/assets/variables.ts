@@ -1,31 +1,33 @@
-import type { RequestOptions } from "./types"
+const urlBase = "http://localhost:5555/api"
+const movieFetch = "/movie"
+const tv = "/tv"
+const images = "/images/"
+const mediaId = "?mediaId="
 
-const urlBase = "https://api.themoviedb.org/3"
-const movie = "/movie/"
-const tv = "/tv/"
-const langAndPage = "?language=en-US&page=1"
-export const movieLink = urlBase + movie
-export const tvShowLink = urlBase + tv
+const movieLink = urlBase + movieFetch
+const tvShowLink = urlBase + tv
 
-export const upcomingMovies = movieLink + "upcoming" + langAndPage
-export const popularMovie = movieLink + "popular" + langAndPage
-export const popularTV = tvShowLink + "popular" + langAndPage
-export const onTheAir = tvShowLink + "on_the_air" + langAndPage
-export const topRated = tvShowLink + "top_rated" + langAndPage
+export const logoMovieLink = movieLink + images
+export const logoTvShowLink = tvShowLink + images
 
-export const multiStart = urlBase + "/search/multi?query="
-export const multiEnd = "&include_adult=false&" + langAndPage
+export const detailsMovieLink = movieLink + mediaId
+export const detailsTvShowLink = tvShowLink + mediaId
 
-export const logosLinkEnd = "/images?include_image_language=en-US"
-
-const Auth =
-  "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4N2ZlOGNmMGRmZmQ1NGI0ZmFmMTRlYzkzZjliOTViZCIsIm5iZiI6MTc3MTI4MjEzNC41NzIsInN1YiI6IjY5OTM5ZWQ2OTcxN2QwZGM5ZDA2NWE0MiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.bbMQkik7cmt6uK6yP5WsuRlItQgQkkkeoH7ycPiJKAg"
-
-export const options: RequestOptions = {
-  headers: {
-    Authorization: Auth,
-  },
-}
+export const upcomingMovies = movieLink + "/upcoming"
+export const popularMovie = movieLink + "/popular"
+export const popularTV = tvShowLink + "/popular"
+export const onTheAir = tvShowLink + "/on_the_air"
+export const topRated = tvShowLink + "/top_rated"
+export const multi = urlBase + "/multi?query="
 
 export const LEFT = "left"
 export const RIGHT = "right"
+
+//String variables
+export const movie = "movie"
+export const serie = "serie"
+
+export const imgLink = "http://image.tmdb.org/t/p/"
+
+export const buttonClass =
+  "fw-bold px-5 py-2 text-capitalize shadow-sm me-2 mb-2 rounded-2 border-00"

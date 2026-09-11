@@ -83,12 +83,6 @@ export type PromiseTypes = {
   apiLink: string
 }
 
-export type RequestOptions = {
-  headers: {
-    Authorization: string
-  }
-}
-
 export type UnionMediaTypes = MovieTypes[] | TvShowTypes[] | undefined
 export type CarouselMediaTypes = { infoMedia: MovieTypes | TvShowTypes }
 

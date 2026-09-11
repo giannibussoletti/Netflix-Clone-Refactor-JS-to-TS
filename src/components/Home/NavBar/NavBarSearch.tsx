@@ -1,6 +1,7 @@
 import { Col, Image } from "react-bootstrap"
 import { useNavigate } from "react-router"
 import type { NavBarSearchTypes } from "../../../assets/types"
+import { imgLink, movie, serie } from "../../../assets/variables"
 
 const NavBarSearch = function ({
   poster,
@@ -18,18 +19,17 @@ const NavBarSearch = function ({
         style={{ cursor: "pointer" }}
         className="p-0 my-2"
         onClick={() => {
-          navigate("/details/" + (mediaType === "movie" ? "movie/" : "serie/") + id)
+          navigate("/details/" + (mediaType === movie ? `${movie}/` : `${serie}/`) + id)
           setResults(undefined)
         }}>
-        <Image style={{ maxHeight: "220px" }} src={"https://image.tmdb.org/t/p/w500/" + poster} />
+        <Image style={{ maxHeight: "220px" }} src={imgLink + "w500/" + poster} />
       </Col>
       <Col className="p-0 ps-2 my-2 flex-grow-1">
-        {" "}
         <h2
           style={{ fontSize: "1.1rem", cursor: "pointer" }}
           className="fw-bold"
           onClick={() => {
-            navigate("/details/" + (mediaType === "movie" ? "movie/" : "serie/") + id)
+            navigate("/details/" + (mediaType === movie ? `${movie}/` : `${serie}/`) + id)
             setResults(undefined)
           }}>
           {titleMovie ? titleMovie : titleSeries}
