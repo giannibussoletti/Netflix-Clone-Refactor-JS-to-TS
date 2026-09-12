@@ -159,9 +159,3 @@ I file generati vengono salvati nella cartella `dist/`.
 ## 🌐 Deploy
 
 Il front-end è deployato su **Vercel**, all'indirizzo [netflixcloneportfolio.vercel.app](https://netflixcloneportfolio.vercel.app/). La variabile d'ambiente `VITE_API_URL` va configurata anche nelle impostazioni del progetto su Vercel, puntando all'URL del back-end in produzione.
-
----
-
-## 📄 Licenza
-
-Nessuna licenza specificata.
