@@ -1,4 +1,4 @@
-const urlBase = "http://localhost:5555/api"
+const urlBase = import.meta.env.VITE_API_URL
 const movieFetch = "/movie"
 const tv = "/tv"
 const images = "/images/"
