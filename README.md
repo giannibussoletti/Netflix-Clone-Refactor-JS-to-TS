@@ -7,6 +7,7 @@ Applicazione front-end che replica l'interfaccia di Netflix, sviluppata con **Re
 I dati relativi a film e serie TV sono forniti dalle API di **The Movie Database**, interrogate tramite un back-end dedicato in Java Spring che funge da proxy, in modo da non esporre pubblicamente la chiave API.
 
 **Demo live:** [netflixcloneportfolio.vercel.app](https://netflixcloneportfolio.vercel.app/)
+
 **Repository back-end:** [netflix-clone-API-calls](https://github.com/giannibussoletti/netflix-clone-API-calls)
 
 ---
