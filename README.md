@@ -1,6 +1,9 @@
 # 🎬 Netflix Clone — Refactor JS to TS
 
-Applicazione front-end che replica l'interfaccia di Netflix, sviluppata con **React, TypeScript e Vite**. Il progetto nasce dal refactoring completo di una precedente versione scritta in JavaScript. I dati relativi a film e serie TV sono forniti da **TMDB**, interrogata tramite un back-end dedicato in Java Spring che funge da proxy, in modo da non esporre pubblicamente la chiave API.
+Applicazione front-end che replica l'interfaccia di Netflix, sviluppata con **React, TypeScript e Vite**. Il progetto nasce dal refactoring completo di una precedente versione scritta in JavaScript disponibile qui
+**Demo live:** [Netflix-react-js-build](https://github.com/giannibussoletti/Netflix_Clone_React_Build)
+
+I dati relativi a film e serie TV sono forniti dalle API di **The Movie Database**, interrogate tramite un back-end dedicato in Java Spring che funge da proxy, in modo da non esporre pubblicamente la chiave API.
 
 **Demo live:** [netflixcloneportfolio.vercel.app](https://netflixcloneportfolio.vercel.app/)
 **Repository back-end:** [netflix-clone-API-calls](https://github.com/giannibussoletti/netflix-clone-API-calls)
