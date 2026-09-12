@@ -162,12 +162,6 @@ Il front-end è deployato su **Vercel**, all'indirizzo [netflixcloneportfolio.ve
 
 ---
 
-## 🔗 Repository correlate
-
-- **Back-end (Java Spring, proxy per TMDB):** [netflix-clone-API-calls](https://github.com/giannibussoletti/netflix-clone-API-calls)
-
----
-
 ## 📄 Licenza
 
 Nessuna licenza specificata.
