@@ -2,7 +2,7 @@
 
 # 🎬 Netflix Clone — Refactor JS to TS
 
-Applicazione front-end che replica l'interfaccia di Netflix, sviluppata con **React, TypeScript e Vite**. Il progetto nasce dal refactoring completo di una precedente versione scritta in JavaScript disponibile qui
+Applicazione front-end che replica l'interfaccia di Netflix, sviluppata con **React, TypeScript e Vite**. Il progetto nasce dal refactoring completo di una precedente versione scritta in JavaScript disponibile qui:
 
 **Vecchia versione:** [Netflix-react-js-build](https://github.com/giannibussoletti/Netflix_Clone_React_Build)
 
